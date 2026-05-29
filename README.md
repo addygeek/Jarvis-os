@@ -9,6 +9,23 @@
 
 ---
 
+## 💡 What We Built & The Role of Google Gemma
+
+### 🏗️ What We Built
+JarvisOS is an **autonomous agentic desktop abstraction layer** designed to run entirely locally on macOS. It bridges the gap between natural language (voice/text) and system command execution by building:
+1.  **A Multi-Workspace Monorepo:** Houses the React/Electron client dashboard, a DI-driven Node.js backend, a plan cache service, document processing, and SQLite persistence.
+2.  **A Native System Tool Registry:** A collection of 11 system integrations allowing the agent to read/write files, launch desktop apps, query search indexes, adjust hardware state, write emails, and generate presentations directly on your Mac.
+3.  **Local RAG & File Mesh:** A local knowledge management layer capable of ingesting PDF directories and performing semantic document search.
+
+### 🧠 The Role & Use of Google Gemma 4
+Google's **Gemma 4 (E4B)** acts as the centralized reasoning engine (or "Kernel brain") governing JarvisOS:
+*   **Local Desktop Inference:** Configured via Ollama using standard int4 quantization, running with full Metal acceleration on Apple Silicon. This ensures complete privacy and zero data leakage.
+*   **Structured Intent Planning:** Gemma 4 acts as the **Planner**, evaluating user requests alongside active conversation context and registered tool schemas. It generates structured JSON plans mapping directly to our registry.
+*   **Reasoning Block (`<|think|>`):** Leverages Gemma's capability to isolate its cognitive process in a dedicated thought channel before declaring final tool execution blocks, which minimizes plan errors.
+*   **Conversational Summarization:** Once execution outcomes are received from POSIX command lines, Gemma acts as the **Summarizer**, synthesizing raw JSON tool results into clean, human-friendly chat responses.
+
+---
+
 ## 🚀 Key Highlights & Features
 
 - 🧠 **Local LLM Orchestration:** Custom-prompted local inference with Google's **Gemma 4 E4B** optimized for JSON tool emission.
