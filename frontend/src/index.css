@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.25);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a313c;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3d4654;
+  }
+}
+
+@keyframes scanline {
+  0%   { left: -33%; }
+  100% { left: 120%; }
+}
+
+@keyframes barbeat {
+  0%   { height: 4px; }
+  100% { height: 24px; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
+
+@layer components {
+  .titlebar-drag {
+    -webkit-app-region: drag;
+  }
+
+  .titlebar-no-drag {
+    -webkit-app-region: no-drag;
+  }
+
+  .glass-panel {
+    @apply rounded-xl border border-jarvis-border/60 bg-jarvis-surface/80 shadow-panel backdrop-blur-xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-jarvis-accent px-4 py-2 text-sm font-medium text-jarvis-bg transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-jarvis-accent/40 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm text-jarvis-subtle transition hover:bg-jarvis-elevated hover:text-jarvis-text focus:outline-none focus:ring-2 focus:ring-jarvis-border;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-jarvis-border bg-jarvis-elevated px-3 py-2 text-sm text-jarvis-text placeholder:text-jarvis-muted focus:border-jarvis-accent/50 focus:outline-none focus:ring-1 focus:ring-jarvis-accent/30;
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "jarvisos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JarvisOS — local offline AI assistant for macOS",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "tools",
+    "agent",
+    "memory",
+    "voice",
+    "documents"
+  ],
+  "scripts": {
+    "postinstall": "npm rebuild better-sqlite3",
+    "test": "npm run test --workspaces --if-present",
+    "setup": "bash scripts/setup.sh",
+    "build": "npm run build -w @jarvisos/tools && npm run build -w @jarvisos/memory && npm run build -w @jarvisos/agent && npm run build -w @jarvisos/documents && npm run build -w @jarvisos/voice && npm run build -w @jarvisos/backend && npm run build -w @jarvisos/frontend",
+    "build:core": "npm run build -w @jarvisos/tools && npm run build -w @jarvisos/memory && npm run build -w @jarvisos/agent && npm run build -w @jarvisos/backend",
+    "typecheck": "npm run build:core && npm run typecheck --workspaces --if-present",
+    "dev": "node scripts/dev-urls.mjs && concurrently -n api,ui -c blue,green \"npm run dev -w @jarvisos/backend\" \"npm run dev -w @jarvisos/frontend\"",
+    "dev:all": "npm run dev",
+    "dev:backend": "npm run dev -w @jarvisos/backend",
+    "dev:frontend": "npm run dev -w @jarvisos/frontend",
+    "demo": "bash scripts/demo.sh",
+    "electron:dev": "npm run electron:dev -w @jarvisos/frontend",
+    "voice:build": "npm run build -w @jarvisos/voice",
+    "documents:build": "npm run build -w @jarvisos/documents"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

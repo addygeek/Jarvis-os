@@ -1,0 +1,66 @@
+{
+  "file_list": { "action": "list", "path": "downloads" },
+  "file_read": { "action": "read", "path": "~/Documents/readme.txt" },
+  "file_scan": { "action": "scan", "path": "desktop", "pattern": "\\.pdf$" },
+  "file_move": {
+    "action": "move",
+    "source": "~/Downloads/paper.pdf",
+    "destination": "~/Documents/Research/paper.pdf"
+  },
+  "browser_open_url": { "action": "open_url", "url": "https://aclanthology.org" },
+  "browser_open_chrome": { "action": "open_browser", "browser": "chrome", "url": "https://aclanthology.org" },
+  "browser_search_google": { "action": "search_google", "query": "multilingual healthcare NLP", "browser": "safari" },
+  "terminal_ls": { "command": "ls -la ~/Downloads" },
+  "terminal_git": { "command": "git status", "cwd": "~/Projects/jarvisos" },
+  "terminal_confirm": { "command": "pnpm install", "confirmDangerous": true },
+  "app_launcher_chrome": { "app": "chrome" },
+  "app_launcher_vscode": { "app": "vscode", "path": "~/Projects/jarvisos" },
+  "pdf_read": { "action": "read", "path": "~/Downloads/paper.pdf" },
+  "pdf_summarize": { "action": "summarize", "path": "~/Downloads/paper.pdf", "maxSentences": 10 },
+  "notes_create": { "action": "create", "title": "ACL ideas", "body": "RAG over local PDFs", "tags": "research,acl" },
+  "notes_search": { "action": "search", "query": "healthcare", "limit": 10 },
+  "folder_scan": { "path": "downloads", "extensions": [".pdf"], "maxDepth": 3, "limit": 100 },
+  "system_volume": { "action": "set_volume", "level": 50 },
+  "system_dark_mode": { "action": "set_dark_mode", "enabled": true },
+  "system_wifi": { "action": "open_wifi_settings" },
+  "calendar_create_ics": {
+    "action": "create_event",
+    "title": "Research meeting",
+    "start": "2026-06-01T15:00:00.000Z",
+    "end": "2026-06-01T16:00:00.000Z",
+    "method": "ics",
+    "location": "Office"
+  },
+  "calendar_create_apple": {
+    "action": "create_event",
+    "title": "Lab standup",
+    "start": "2026-06-02T14:00:00.000Z",
+    "end": "2026-06-02T14:30:00.000Z",
+    "method": "calendar"
+  },
+  "email_draft_eml": {
+    "action": "draft_eml",
+    "to": "prof@example.edu",
+    "subject": "Paper summary",
+    "body": "Hi Professor,\n\nPlease find my summary below.\n"
+  },
+  "email_compose_mail": {
+    "action": "compose",
+    "to": "prof@example.edu",
+    "subject": "ACL paper link",
+    "body": "Sharing the Anthology link from our session."
+  },
+  "presentation_html": {
+    "action": "generate_html",
+    "title": "Healthcare NLP",
+    "slides": [
+      { "title": "Overview", "bullets": ["Problem", "Dataset"] },
+      { "title": "Results", "bullets": ["Key finding 1", "Key finding 2"] }
+    ]
+  },
+  "presentation_outline": {
+    "action": "generate_outline",
+    "title": "Talk outline",
+    "slides": [{ "title": "Intro", "bullets": ["Hook", "Thesis"] }]
+  }
+}

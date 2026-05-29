@@ -1,0 +1,4 @@
+# Optional app icons for electron-builder (macOS).
+# Add icon.icns (or icon.png at least 512×512) and set in package.json:
+#   "build": { "mac": { "icon": "build/icons/icon.icns" } }
+# Without a custom icon, electron-builder uses the default Electron icon.
