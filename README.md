@@ -18,11 +18,39 @@ JarvisOS is an **autonomous agentic desktop abstraction layer** designed to run 
 3.  **Local RAG & File Mesh:** A local knowledge management layer capable of ingesting PDF directories and performing semantic document search.
 
 ### 🧠 The Role & Use of Google Gemma 4
-Google's **Gemma 4 (E4B)** acts as the centralized reasoning engine (or "Kernel brain") governing JarvisOS:
-*   **Local Desktop Inference:** Configured via Ollama using standard int4 quantization, running with full Metal acceleration on Apple Silicon. This ensures complete privacy and zero data leakage.
-*   **Structured Intent Planning:** Gemma 4 acts as the **Planner**, evaluating user requests alongside active conversation context and registered tool schemas. It generates structured JSON plans mapping directly to our registry.
-*   **Reasoning Block (`<|think|>`):** Leverages Gemma's capability to isolate its cognitive process in a dedicated thought channel before declaring final tool execution blocks, which minimizes plan errors.
-*   **Conversational Summarization:** Once execution outcomes are received from POSIX command lines, Gemma acts as the **Summarizer**, synthesizing raw JSON tool results into clean, human-friendly chat responses.
+Google's **Gemma 4 (E4B)** acts as the centralized reasoning engine (or "Kernel brain") governing JarvisOS. It impacts every layer of the system:
+
+#### ⚡ How Gemma 4 Impacts the System
+*   **Zero-Latency Resource Footprint:** By using the optimized **Gemma 4 E4B** (4-bit quantized) local weights, the model runs directly inside your Mac's unified memory, taking advantage of Apple Silicon's Apple Neural Engine (ANE) and Metal-accelerated GPU. This eliminates API network lag and provides fast local token generation.
+*   **100% Privacy & Data Sovereignty:** Since all reasoning is handled on-device, sensitive workstation data, files, calendar entries, and shell logs never leave the local environment, providing enterprise-grade security.
+*   **Offline Independence:** JarvisOS runs completely offline—on flights, remote areas, or firewalled environments—with zero ongoing API usage fees.
+
+#### 🔧 Code-Level Use Cases in the Monorepo
+Gemma 4 is utilized across four critical pipelines in the codebase:
+1.  **Structured Task Planning ([planner.ts](file:///Users/addy/Coding/test/google%20gemini/agent/src/planner.ts)):** Analyzes free-form user queries and converts them into sequential, executable JSON steps matching our native tools.
+2.  **Conversational Chat ([orchestrator.ts](file:///Users/addy/Coding/test/google%20gemini/agent/src/orchestrator.ts)):** Handles non-actionable queries, maintaining conversation context over conversation logs.
+3.  **Outcome Summarization ([executor.ts](file:///Users/addy/Coding/test/google%20gemini/agent/src/executor.ts)):** Analyzes raw POSIX command outcomes and synthesizes them into clean, human-friendly conversational summaries.
+4.  **Research & Document Summarization ([documents/src/summarize.ts](file:///Users/addy/Coding/test/google%20gemini/documents/src/pdf.ts)):** Reads PDF documents, extracts text segments, and batches them into structural chapter summaries.
+
+---
+
+## 📖 System Blueprints & Architecture Docs
+For deep dives into design decisions, internal APIs, and Gemma prompt structures, refer to our comprehensive documentation suite:
+
+*   **System Overview & Setup:**
+    *   [QUICKSTART.md](file:///Users/addy/Coding/test/google%20gemini/QUICKSTART.md) — Get up and running in 5 minutes.
+    *   [prd.md](file:///Users/addy/Coding/test/google%20gemini/prd.md) — Full product requirements and execution loop specs.
+    *   [INTEGRATION.md](file:///Users/addy/Coding/test/google%20gemini/INTEGRATION.md) — Package mappings, startup flows, and API schemas.
+*   **Core Architecture & Lifecycle Guides:**
+    *   [High-Level Architecture](file:///Users/addy/Coding/test/google%20gemini/docs/architecture/01-high-level-architecture.md) — Monorepo components and service layers.
+    *   [Request Lifecycle Flow](file:///Users/addy/Coding/test/google%20gemini/docs/architecture/02-request-lifecycle.md) — Sequence from chat input to tool execution.
+    *   [Memory & RAG Persistent Mesh](file:///Users/addy/Coding/test/google%20gemini/docs/architecture/03-memory-and-rag.md) — SQLite schema and LanceDB vector mesh.
+    *   [Tool & Plugin Subsystem](file:///Users/addy/Coding/test/google%20gemini/docs/architecture/04-tools-and-plugins.md) — macOS automation mechanisms and sandboxing.
+    *   [Frontend UI & Electron Shell](file:///Users/addy/Coding/test/google%20gemini/docs/architecture/05-frontend-and-electron.md) — Vite structure and main-to-renderer IPC.
+*   **Local LLM (Gemma) Customization Guides:**
+    *   [Gemma Orchestration Overview](file:///Users/addy/Coding/test/google%20gemini/docs/gemini/01-overview.md) — The rationale behind local Gemma models.
+    *   [Model Configuration & Settings](file:///Users/addy/Coding/test/google%20gemini/docs/gemini/02-configuration.md) — Hyperparameters for E4B optimizer.
+    *   [Prompts & Agent Behavior](file:///Users/addy/Coding/test/google%20gemini/docs/gemini/04-prompts-and-agent-behavior.md) — Deep dive into `<|think|>` channel engineering.
 
 ---
 
