@@ -9,6 +9,32 @@
 
 ---
 
+## 🖥️ Application Screenshots
+
+### 1. Main Dashboard
+Provides a premium dark-mode glassmorphic interface showing real-time Ollama connection status, recent execution history, and quick preset suggestion cards.
+![JarvisOS Dashboard](docs/images/dashboard.png)
+
+### 2. Conversational Chat Interface
+Run chat queries locally with a custom thinking process indicator showing real-time planning states.
+![Conversational Chat](docs/images/chat.png)
+
+### 3. Agent Planning & Mapping
+Watch Gemma 4 map your user intents into step-by-step sequential tool actions.
+![Agent Mapping](docs/images/agent_mapping.png)
+
+### 4. Interactive Tool Registry
+Explore and test the 11 integrated macOS system tools natively.
+![Tool Registry](docs/images/tools.png)
+
+### 5. Google Search Integration
+Watch Chrome or Safari launch and search parameters dynamically resolved.
+![Browser Search](docs/images/google_search.png)
+
+---
+
+---
+
 ## 💡 What We Built & The Role of Google Gemma
 
 ### 🏗️ What We Built
@@ -249,6 +275,19 @@ JarvisOS is built and maintained by **Aditya Kumar**. You can connect with Adity
 - **LinkedIn:** [Aditya Kumar](https://www.linkedin.com/in/aditya-kumar-learner/)
 - **Email:** aditya@darexai.com
 - **Phone / WhatsApp:** +91 9119267828
+
+### 📇 Connect Card & QR Code
+Scan the QR code below to connect with Aditya instantly, or refer to the interactive business card:
+
+<p align="center">
+  <img src="docs/images/aditya_qr_close.png" width="30%" alt="Aditya Kumar QR Code" style="margin-right: 20px;" />
+  <img src="docs/images/aditya_image_1.png" width="55%" alt="Aditya Kumar Connect Card" />
+</p>
+
+<p align="center">
+  <img src="docs/images/aditya_image_2.png" width="90%" alt="DarexAI Company Banner" />
+</p>
+
 
 ---
 
